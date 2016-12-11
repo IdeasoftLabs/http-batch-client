@@ -1,0 +1,28 @@
+{
+  "name": "mstfleri/batch-request-client",
+  "description": "Batch request implementation for php",
+  "type": "library",
+  "require": {
+    "guzzlehttp/guzzle": "^6.2"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^5.7"
+  },
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Mustafa Ileri",
+      "email": "mi@mustafaileri.com"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "BatchRequest\\Client\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "BatchRequest\\Tests\\": "tests/"
+    }
+  }
+}

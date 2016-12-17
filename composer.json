@@ -4,7 +4,7 @@
   "keywords" : ["batch request", "api", "request"],
   "type": "library",
   "require": {
-    "php": ">=5.4.0",
+    "php": ">=5.5.0",
     "guzzlehttp/guzzle": "^6.2"
   },
   "require-dev": {

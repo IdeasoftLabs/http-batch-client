@@ -20,11 +20,13 @@ class Client
 
     public function send($batchUrl, array $headers = [], array $subRequests = [])
     {
+        if (sizeof($subRequests) < 1) {
+            throw new \Exception("Sub requests are not found.");
+        }
         $this->batchRequestHost = parse_url($batchUrl, PHP_URL_HOST);
         $this->boundary = md5(rand(0, 1000000));
 
         $batchRequest = $this->getBatchRequest($batchUrl, $headers, $subRequests);
-
         return $this->getBatchResponse($batchRequest);
     }
 
@@ -90,7 +92,7 @@ class Client
         return $headerString;
     }
 
-    public function getBatchResponse(Request $batchRequest)
+    private function getBatchResponse(Request $batchRequest)
     {
         $client = new GuzzleClient();
         $batchResponse = new Response();
@@ -105,7 +107,7 @@ class Client
         return $batchResponse;
     }
 
-    public function parseResponseBody($body)
+    private function parseResponseBody($body)
     {
         $delimiter = "--" . $this->boundary . "--";
         $body = current(explode($delimiter, $body));
@@ -118,7 +120,7 @@ class Client
 
     }
 
-    public function getSubResponse($responseString)
+    private function getSubResponse($responseString)
     {
         $responseString = trim($responseString);
         $data = explode(PHP_EOL . PHP_EOL, $responseString, 2);

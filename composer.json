@@ -1,8 +1,10 @@
 {
   "name": "mstfleri/batch-request-client",
-  "description": "Batch request implementation for php",
+  "description": "Batch request client implementation for php.",
+  "keywords" : ["batch request", "api", "request"],
   "type": "library",
   "require": {
+    "php": ">=5.4.0",
     "guzzlehttp/guzzle": "^6.2"
   },
   "require-dev": {
@@ -24,5 +26,6 @@
     "psr-4": {
       "BatchRequest\\Tests\\": "tests/"
     }
-  }
+  },
+  "target-dir" : "mstfleri/batch-request-client"
 }

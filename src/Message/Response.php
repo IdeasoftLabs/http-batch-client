@@ -3,7 +3,7 @@ namespace BatchRequest\Client\Message;
 
 use GuzzleHttp\Psr7\Response as GuzzleResponse;
 
-class Response
+class Response extends GuzzleResponse
 {
     private $subResponses = [];
 

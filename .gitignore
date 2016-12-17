@@ -1,3 +1,5 @@
 composer.phar
 /vendor/
-# composer.lock
+composer.lock
+.DS_Store
+.idea/

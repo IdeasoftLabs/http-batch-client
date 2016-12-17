@@ -3,9 +3,9 @@ namespace BatchRequest\Client;
 
 
 use BatchRequest\Client\Message\Response;
-use GuzzleHttp\MessageFormatter;
 use GuzzleHttp\Psr7\Request;
 use BatchRequest\Client\Message\Request as BatchRequest;
+use GuzzleHttp\Client as GuzzleClient;
 
 class Client
 {
@@ -63,7 +63,6 @@ class Client
         if ($request->getBody()->getSize() > 0) {
             $data[] = $request->getBody()->getContents();
         }
-
         return implode(PHP_EOL . PHP_EOL, $data) . PHP_EOL;
     }
 
@@ -93,24 +92,23 @@ class Client
 
     public function getBatchResponse(Request $batchRequest)
     {
-        $client = new \GuzzleHttp\Client();
+        $client = new GuzzleClient();
+        $batchResponse = new Response();
         $response = $client->send($batchRequest);
         $subResponsesString = $this->parseResponseBody($response->getBody()->getContents());
         $subRequestKeys = array_keys($this->batchRequest->getSubRequests());
         $i = 0;
         foreach ($subResponsesString as $subResponseString) {
             $subResponse = $this->getSubResponse(ltrim($subResponseString));
-            $response->addSubResponse($subRequestKeys[$i], $subResponse);
+            $batchResponse->addSubResponse($subRequestKeys[$i], $subResponse);
         }
-        return $response;
+        return $batchResponse;
     }
 
     public function parseResponseBody($body)
     {
-        $this->boundary = "batch";
         $delimiter = "--" . $this->boundary . "--";
         $body = current(explode($delimiter, $body));
-
         $delimiter = "--" . $this->boundary;
         $subResponseData = explode($delimiter, $body);
         $subResponseData = array_filter($subResponseData, function ($data) {

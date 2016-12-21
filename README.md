@@ -1,4 +1,4 @@
-## http-batch-client [![Build Status](https://travis-ci.org/mustafaileri/http-batch-client.svg?branch=master)](https://travis-ci.org/mustafaileri/http-batch-client)
+## http-batch-client [![Build Status](https://travis-ci.org/IdeasoftLabs/http-batch-client.svg?branch=master)](https://travis-ci.org/IdeasoftLabs/http-batch-client)
 http-batch-client allows to combine multiple http requests into a single batch request.
 This tool is useful for decrease http requests especially for api endpoints.
 ## About multipart/batch

@@ -102,7 +102,7 @@ class Client
         $i = 0;
         foreach ($subResponsesString as $subResponseString) {
             $subResponse = $this->getSubResponse(ltrim($subResponseString));
-            $batchResponse->addSubResponse($subRequestKeys[$i], $subResponse);
+            $batchResponse->addSubResponse($subRequestKeys[$i++], $subResponse);
         }
         return $batchResponse;
     }

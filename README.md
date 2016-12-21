@@ -4,6 +4,12 @@ This tool is useful for decrease http requests especially for api endpoints.
 ## About multipart/batch
 Http multipart/batch is a format for packaging multiple HTTP requests in a single request. You can read this draft more info: https://tools.ietf.org/id/draft-snell-http-batch-00.html
 
+### Installing http-batch-client
+The easiest way to install http-batch-client is through composer.
+```bash
+composer require ideasoft/http-batch-client
+```
+
 ## Important Note:
 This is only a client implementation. Your api service should supports batch request.
 If you are using Symfony 2.8+, you can use https://github.com/mustafaileri/http-batch-bundle for server implementation.

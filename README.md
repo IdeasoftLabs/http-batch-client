@@ -7,7 +7,7 @@ Http multipart/batch is a format for packaging multiple HTTP requests in a singl
 ### Installing http-batch-client
 The easiest way to install http-batch-client is through composer.
 ```bash
-composer require ideasoft/http-batch-client
+composer require ideasoft/batch-request-client
 ```
 
 ## Important Note:

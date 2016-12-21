@@ -1,5 +1,5 @@
 {
-  "name": "mstfleri/batch-request-client",
+  "name": "ideasoft/batch-request-client",
   "description": "Batch request client implementation for php.",
   "keywords" : ["batch request", "api", "request"],
   "type": "library",
@@ -12,8 +12,8 @@
   "license": "MIT",
   "authors": [
     {
-      "name": "Mustafa Ileri",
-      "email": "mi@mustafaileri.com"
+      "name": "IdeasoftLabs",
+      "email": "labs@ideasoft.com.tr"
     }
   ],
   "autoload": {

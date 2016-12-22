@@ -12,7 +12,7 @@ composer require ideasoft/batch-request-client
 
 ## Important Note:
 This is only a client implementation. Your api service should supports batch request.
-If you are using Symfony 2.8+, you can use https://github.com/mustafaileri/http-batch-bundle for server implementation.
+If you are using Symfony 2.8+, you can use https://github.com/IdeasoftLabs/http-batch-bundle for server implementation.
 ## How to use http-batch-client
 You can create a batch request client and send your requests to batch endpoint and use it via client.
 ```php

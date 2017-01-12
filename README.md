@@ -28,7 +28,7 @@ $requests = [
     "orders" => new \GuzzleHttp\Psr7\Request("GET", "http://your-api-url/orders", ["Authorization" => "Bearer TOKEN"])
 ];
 
-$data = $client->send("http://your-api-url/batch", $headers);
+$data = $client->send("http://your-api-url/batch", $headers, $requests);
 if ($data->getSubResponses()["users"]->getStatusCode()) {
     //sub request success for users 
 }

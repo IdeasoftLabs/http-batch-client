@@ -23,6 +23,16 @@ class Client
      */
     private $batchRequest;
 
+    /**
+     * @var GuzzleClient $guzzleClient
+     */
+    private $guzzleClient;
+
+    public function __construct(GuzzleClient $guzzleClient = null)
+    {
+        $this->guzzleClient = $guzzleClient ?: new GuzzleClient();
+    }
+
     public function send($batchUrl, array $headers = [], array $subRequests = [])
     {
         if (sizeof($subRequests) < 1) {
@@ -99,9 +109,8 @@ class Client
 
     private function getBatchResponse(Request $batchRequest)
     {
-        $client = new GuzzleClient();
         $batchResponse = new Response();
-        $response = $client->send($batchRequest);
+        $response = $this->guzzleClient->send($batchRequest);
         $subResponsesString = $this->parseResponseBody($response->getBody()->getContents());
         $subRequestKeys = array_keys($this->batchRequest->getSubRequests());
         $i = 0;

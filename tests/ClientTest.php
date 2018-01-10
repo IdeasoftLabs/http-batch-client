@@ -1,5 +1,4 @@
 <?php
-
 namespace BatchRequest\Tests;
 
 use BatchRequest\Client\Client;
@@ -8,14 +7,15 @@ use GuzzleHttp\Psr7\Response;
 
 class ClientTest extends \PHPUnit_Framework_TestCase
 {
-    /** @var  Client */
+    /**
+     * @var Client $batchClient
+     */
     private $batchClient;
 
     public function setUp()
     {
         $this->batchClient = new Client();
     }
-
 
     public function testGetBatchRequestBody()
     {
@@ -62,7 +62,6 @@ class ClientTest extends \PHPUnit_Framework_TestCase
         $this->assertTrue(sizeof(explode(PHP_EOL, $data)) == 3);
         $this->assertContains("Content-Type", $data);
     }
-
 
     public function testGetSubRequestHeaderAsString()
     {
@@ -157,6 +156,4 @@ EOT;
         }
         return $method->invokeArgs($object, $args);
     }
-
-
 }

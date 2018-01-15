@@ -8,7 +8,7 @@ class Response extends GuzzleResponse
     private $subResponses = [];
 
     /**
-     * @return array
+     * @return GuzzleResponse[]
      */
     public function getSubResponses()
     {
@@ -16,7 +16,7 @@ class Response extends GuzzleResponse
     }
 
     /**
-     * @param array $subResponses
+     * @param GuzzleResponse[] $subResponses
      */
     public function setSubResponses($subResponses)
     {

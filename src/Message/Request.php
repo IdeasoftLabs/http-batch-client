@@ -8,7 +8,7 @@ class Request extends GuzzleRequest
     private $subRequests = [];
 
     /**
-     * @return array
+     * @return GuzzleRequest[]
      */
     public function getSubRequests()
     {
@@ -16,13 +16,17 @@ class Request extends GuzzleRequest
     }
 
     /**
-     * @param array $subRequests
+     * @param GuzzleRequest[] $subRequests
      */
     public function setSubRequests($subRequests)
     {
         $this->subRequests = $subRequests;
     }
 
+	/**
+	 * @param string        $key
+	 * @param GuzzleRequest $request
+	 */
     public function addSubRequest($key, GuzzleRequest $request)
     {
         $this->subRequests[$key] = $request;

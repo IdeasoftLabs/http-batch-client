@@ -1,7 +1,6 @@
 <?php
 namespace BatchRequest\Client;
 
-
 use BatchRequest\Client\Message\Response;
 use GuzzleHttp\Psr7\Request;
 use BatchRequest\Client\Message\Request as BatchRequest;
@@ -9,14 +8,30 @@ use GuzzleHttp\Client as GuzzleClient;
 
 class Client
 {
-    /** @var  string */
+    /**
+     * @var string $boundary
+     */
     private $boundary;
 
-    /** @var  string */
+    /**
+     * @var string $batchRequestHost
+     */
     private $batchRequestHost;
 
-    /** @var  BatchRequest */
+    /**
+     * @var BatchRequest $batchRequest
+     */
     private $batchRequest;
+
+    /**
+     * @var GuzzleClient $guzzleClient
+     */
+    private $guzzleClient;
+
+    public function __construct(GuzzleClient $guzzleClient = null)
+    {
+        $this->guzzleClient = $guzzleClient ?: new GuzzleClient();
+    }
 
     public function send($batchUrl, array $headers = [], array $subRequests = [])
     {
@@ -94,9 +109,8 @@ class Client
 
     private function getBatchResponse(Request $batchRequest)
     {
-        $client = new GuzzleClient();
         $batchResponse = new Response();
-        $response = $client->send($batchRequest);
+        $response = $this->guzzleClient->send($batchRequest);
         $subResponsesString = $this->parseResponseBody($response->getBody()->getContents());
         $subRequestKeys = array_keys($this->batchRequest->getSubRequests());
         $i = 0;
